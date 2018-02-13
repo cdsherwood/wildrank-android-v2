@@ -29,7 +29,7 @@ public class ScoutingStacksView extends ScoutingView implements View.OnClickList
         super(context, attrs);
 
         LayoutInflater inflater = LayoutInflater.from(context);
-        inflater.inflate(R.layout.scouting_view_stacks, this, true);
+        inflater.inflate(R.layout.scouting_view_cycle, this, true);
 
         totesCounter = (ScoutingCounterView) findViewById(R.id.tote_counter);
         preexistingStackCheckbox = (ScoutingCheckboxView) findViewById(R.id.preexisting);
