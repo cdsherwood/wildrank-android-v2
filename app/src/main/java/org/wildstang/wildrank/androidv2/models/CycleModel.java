@@ -96,7 +96,8 @@ public class CycleModel {
     /**
      * A meaningful cycle is defined as one that indicates something actually happened.
      * <p>
-     * We will define a meaningful cycle as one that has scored game pieces or robot actions.
+     * We will define a meaningful cycle as one that has scored game pieces or robot actions
+     * resulting in scoring.
      *
      * @return true if it is meaningful cycle, false if otherwise
      */
