@@ -15,45 +15,41 @@
         android:textSize="20dp" />
 
     <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-        android:id="@+id/tote_counter"
+        android:id="@+id/gamepiece_dropped"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        app:label="Tote Counter" />
+        app:label="Cube Dropped" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignTop="@id/tote_counter"
+        android:layout_alignTop="@id/gamepiece_dropped"
         android:orientation="vertical">
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-            android:id="@+id/includes_bin"
+            android:id="@+id/scale_weaken"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            app:label="Includes Bin" />
+            app:label="Scale Weaken" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-            android:id="@+id/includes_noodle"
+            android:id="@+id/scale_diff"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            app:label="Includes Noodle" />
+            app:label="Scale Difference" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-            android:id="@+id/stack_dropped"
+            android:id="@+id/scale_strengthen"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            app:label="Stack Dropped" />
+            app:label="Scale Strengthen" />
 
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-            android:id="@+id/bin_dropped"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            app:label="Bin Dropped" />
+
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
             android:id="@+id/not_scored"
@@ -67,21 +63,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@id/tote_counter"
+        android:layout_alignTop="@id/gamepiece_dropped"
         android:orientation="vertical">
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-            android:id="@+id/preexisting"
+            android:id="@+id/switch_weaken"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            app:label="Preexisting" />
+            app:label="Switch Weaken" />
 
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
-            android:id="@+id/preexisting_height"
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+            android:id="@+id/switch_diff"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            app:label="Height"
-            app:values="@array/preexisting_heights" />
+            app:label="Switch Difference" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+            android:id="@+id/switch_strengthen"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:label="Switch Strengthen" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+            android:id="@+id/exchange_score"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:label="Exchange Score" />
 
     </LinearLayout>
 

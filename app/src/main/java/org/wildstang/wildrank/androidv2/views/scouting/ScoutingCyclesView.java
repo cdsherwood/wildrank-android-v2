@@ -12,38 +12,42 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ScoutingStacksView extends ScoutingView implements View.OnClickListener {
+public class ScoutingCyclesView extends ScoutingView implements View.OnClickListener {
 
-    private List<CycleModel> stacks = new ArrayList<>();
+    private List<CycleModel> cycles = new ArrayList<>();
 
-    private ScoutingCounterView totesCounter;
-    private ScoutingCheckboxView preexistingStackCheckbox;
-    private ScoutingSpinnerView preexistingHeightSpinner;
-    private ScoutingCheckboxView hasBinCheckbox;
-    private ScoutingCheckboxView hasNoodleCheckbox;
-    private ScoutingCheckboxView stackDroppedCheckbox;
-    private ScoutingCheckboxView binDroppedCheckbox;
+    private ScoutingCounterView gamepieceDroppedCounter;
+    private ScoutingCheckboxView scaleWeakenCheckbox;
+    private ScoutingCheckboxView scaleDiffCheckbox;
+    private ScoutingCheckboxView scaleStrengthenCheckbox;
+    private ScoutingCheckboxView switchWeakenCheckbox;
+    private ScoutingCheckboxView switchDiffCheckbox;
+    private ScoutingCheckboxView switchStrengthenCheckbox;
+    private ScoutingCheckboxView ExchangeScoreCheckbox;
     private ScoutingCheckboxView notScoredCheckbox;
 
-    public ScoutingStacksView(Context context, AttributeSet attrs) {
+    public ScoutingCyclesView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         LayoutInflater inflater = LayoutInflater.from(context);
         inflater.inflate(R.layout.scouting_view_cycle, this, true);
 
-        totesCounter = (ScoutingCounterView) findViewById(R.id.tote_counter);
-        preexistingStackCheckbox = (ScoutingCheckboxView) findViewById(R.id.preexisting);
-        preexistingHeightSpinner = (ScoutingSpinnerView) findViewById(R.id.preexisting_height);
-        hasBinCheckbox = (ScoutingCheckboxView) findViewById(R.id.includes_bin);
-        hasNoodleCheckbox = (ScoutingCheckboxView) findViewById(R.id.includes_noodle);
-        stackDroppedCheckbox = (ScoutingCheckboxView) findViewById(R.id.stack_dropped);
-        binDroppedCheckbox = (ScoutingCheckboxView) findViewById(R.id.bin_dropped);
+        scaleWeakenCheckbox = (ScoutingCheckboxView) findViewById(R.id.scale_weaken);
+        scaleDiffCheckbox = (ScoutingCheckboxView) findViewById(R.id.scale_diff);
+        scaleStrengthenCheckbox = (ScoutingCheckboxView) findViewById(R.id.scale_strengthen);
+        switchWeakenCheckbox = (ScoutingCheckboxView) findViewById(R.id.switch_weaken);
+        switchDiffCheckbox = (ScoutingCheckboxView) findViewById(R.id.switch_diff);
+        switchStrengthenCheckbox = (ScoutingCheckboxView) findViewById(R.id.switch_strengthen);
+        switchStrengthenCheckbox = (ScoutingCheckboxView) findViewById(R.id.exchange_score);
+        gamepieceDroppedCounter = (ScoutingCounterView) findViewById(R.id.gamepiece_dropped);
         notScoredCheckbox = (ScoutingCheckboxView) findViewById(R.id.not_scored);
 
+        /* THIS IS IMPORTANT!
         preexistingStackCheckbox.setOnValueChangedListener(preexistingHeightSpinner::setEnabled);
 
         // Synchronize the state of the preexisting height spinner with the checkbox
         preexistingHeightSpinner.setEnabled(preexistingStackCheckbox.isChecked());
+        */
 
         findViewById(R.id.finish_cycle).setOnClickListener(this);
     }
@@ -51,7 +55,7 @@ public class ScoutingStacksView extends ScoutingView implements View.OnClickList
     @Override
     public void writeContentsToMap(Map<String, Object> map) {
         List<Map<String, Object>> mappedDataList = new ArrayList<>();
-        for (CycleModel stack : stacks) {
+        for (CycleModel stack : cycles) {
             mappedDataList.add(stack.toMap());
         }
         map.put(key, mappedDataList);
@@ -68,9 +72,9 @@ public class ScoutingStacksView extends ScoutingView implements View.OnClickList
         }
 
         if (mappedDataList != null) {
-            stacks.clear();
+            cycles.clear();
             for (Map<String, Object> dataMap : mappedDataList) {
-                stacks.add(CycleModel.fromMap(dataMap));
+                cycles.add(CycleModel.fromMap(dataMap));
             }
         }
     }
@@ -95,7 +99,7 @@ public class ScoutingStacksView extends ScoutingView implements View.OnClickList
                 data.preexistingToteCount = 0;
             }
 
-            stacks.add(data);
+            cycles.add(data);
 
             // Reset all the views by creating a default StackData
             updateViewsFromData(new CycleModel());

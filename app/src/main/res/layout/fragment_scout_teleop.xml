@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingStacksView
+    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCyclesView
         android:id="@+id/stacks_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
