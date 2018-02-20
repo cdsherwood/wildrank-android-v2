@@ -7,7 +7,7 @@ import android.util.Log;
 import com.couchbase.lite.Document;
 
 import org.wildstang.wildrank.androidv2.interfaces.IMatchDataView;
-import org.wildstang.wildrank.androidv2.models.StackModel;
+import org.wildstang.wildrank.androidv2.models.CycleModel;
 
 import java.util.List;
 import java.util.Map;
@@ -34,12 +34,12 @@ public class MatchDataNumberCappedStacksView extends MatchDataView implements IM
                 .filter(doc -> (doc.getProperty("data") != null))
                 .map(doc -> (Map<String, Object>) doc.getProperty("data"))
                 .flatMap(data -> {
-                    List<Map<String, Object>> stacks = (List<Map<String, Object>>) data.get("stacks");
-                    return Observable.from(stacks);
+                    List<Map<String, Object>> cycles = (List<Map<String, Object>>) data.get("stacks");
+                    return Observable.from(cycles);
                 })
                 .map(stack -> {
-                    boolean includesBin = (boolean) stack.get(StackModel.HAS_BIN_KEY);
-                    boolean binDropped = (boolean) stack.get(StackModel.BIN_DROPPED_KEY);
+                    boolean includesBin = (boolean) stack.get(CycleModel.HAS_BIN_KEY);
+                    boolean binDropped = (boolean) stack.get(CycleModel.BIN_DROPPED_KEY);
                     return (includesBin && !binDropped) ? 1 : 0;
                 })
                 .subscribeOn(Schedulers.computation());

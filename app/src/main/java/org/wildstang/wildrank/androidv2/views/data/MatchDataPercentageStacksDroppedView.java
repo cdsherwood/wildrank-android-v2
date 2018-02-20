@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import com.couchbase.lite.Document;
 
 import org.wildstang.wildrank.androidv2.interfaces.IMatchDataView;
-import org.wildstang.wildrank.androidv2.models.StackModel;
+import org.wildstang.wildrank.androidv2.models.CycleModel;
 
 import java.util.List;
 import java.util.Map;
@@ -35,7 +35,7 @@ public class MatchDataPercentageStacksDroppedView extends MatchDataView implemen
             List<Map<String, Object>> stacks = (List<Map<String, Object>>) data.get("stacks");
             for (Map<String, Object> stack : stacks) {
                 totalStacks++;
-                boolean dropped = (boolean) stack.get(StackModel.STACK_DROPPED_KEY);
+                boolean dropped = (boolean) stack.get(CycleModel.STACK_DROPPED_KEY);
                 if (dropped) {
                     droppedStacks++;
                 }

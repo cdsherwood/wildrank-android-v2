@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import org.wildstang.wildrank.androidv2.R;
-import org.wildstang.wildrank.androidv2.models.StackModel;
+import org.wildstang.wildrank.androidv2.models.CycleModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class ScoutingStacksView extends ScoutingView implements View.OnClickListener {
 
-    private List<StackModel> stacks = new ArrayList<>();
+    private List<CycleModel> stacks = new ArrayList<>();
 
     private ScoutingCounterView totesCounter;
     private ScoutingCheckboxView preexistingStackCheckbox;
@@ -45,13 +45,13 @@ public class ScoutingStacksView extends ScoutingView implements View.OnClickList
         // Synchronize the state of the preexisting height spinner with the checkbox
         preexistingHeightSpinner.setEnabled(preexistingStackCheckbox.isChecked());
 
-        findViewById(R.id.finish_stack).setOnClickListener(this);
+        findViewById(R.id.finish_cycle).setOnClickListener(this);
     }
 
     @Override
     public void writeContentsToMap(Map<String, Object> map) {
         List<Map<String, Object>> mappedDataList = new ArrayList<>();
-        for (StackModel stack : stacks) {
+        for (CycleModel stack : stacks) {
             mappedDataList.add(stack.toMap());
         }
         map.put(key, mappedDataList);
@@ -70,7 +70,7 @@ public class ScoutingStacksView extends ScoutingView implements View.OnClickList
         if (mappedDataList != null) {
             stacks.clear();
             for (Map<String, Object> dataMap : mappedDataList) {
-                stacks.add(StackModel.fromMap(dataMap));
+                stacks.add(CycleModel.fromMap(dataMap));
             }
         }
     }
@@ -78,8 +78,8 @@ public class ScoutingStacksView extends ScoutingView implements View.OnClickList
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == R.id.finish_stack) {
-            StackModel data = new StackModel();
+        if (id == R.id.finish_cycle) {
+            CycleModel data = new CycleModel();
             data.toteCount = totesCounter.getCount();
             data.hasBin = hasBinCheckbox.isChecked();
             data.hasNoodle = hasNoodleCheckbox.isChecked();
@@ -98,11 +98,11 @@ public class ScoutingStacksView extends ScoutingView implements View.OnClickList
             stacks.add(data);
 
             // Reset all the views by creating a default StackData
-            updateViewsFromData(new StackModel());
+            updateViewsFromData(new CycleModel());
         }
     }
 
-    private void updateViewsFromData(StackModel data) {
+    private void updateViewsFromData(CycleModel data) {
         totesCounter.setCount(data.toteCount);
         hasBinCheckbox.setChecked(data.hasBin);
         hasNoodleCheckbox.setChecked(data.hasNoodle);

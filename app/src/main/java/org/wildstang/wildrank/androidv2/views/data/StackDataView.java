@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.couchbase.lite.Document;
 
-import org.wildstang.wildrank.androidv2.models.StackModel;
+import org.wildstang.wildrank.androidv2.models.CycleModel;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 public class StackDataView extends View {
-    List<List<StackModel>> stacks = new ArrayList<>();
+    List<List<CycleModel>> stacks = new ArrayList<>();
     int stackCount = 0;
 
     Paint textPaint, existingTotesPaint, newTotesPaint, binPaint, noodlePaint, outlinePaint, droppedPaint, notScoredPaint;
@@ -54,11 +54,11 @@ public class StackDataView extends View {
         // Sorts the matches by match number
         Collections.sort(matchDocs, new MatchDocumentComparator());
         stackCount = 0;
-        // Default, empty StackModel to compare to
+        // Default, empty CycleModel to compare to
         for (Document doc : matchDocs) {
             Map<String, Object> data = (Map<String, Object>) doc.getProperty("data");
             List<Map<String, Object>> stackData = (List<Map<String, Object>>) data.get("stacks");
-            List<StackModel> matchStacks = new ArrayList<>();
+            List<CycleModel> matchStacks = new ArrayList<>();
             if (stackData.size() == 0) {
                 // For a team that scored no stacks during a match, we should display a blank space.
                 // Increment the stack count to account for this blank space
@@ -69,8 +69,8 @@ public class StackDataView extends View {
             } else {
                 for (int j = 0; j < stackData.size(); j++) {
                     Log.d("wildrank", "stack for match " + (String) doc.getProperty("match_key") + ": " + stackData.get(j));
-                    StackModel stack = StackModel.fromMap(stackData.get(j));
-                    if (stack.isMeaningfulStack()) {
+                    CycleModel stack = CycleModel.fromMap(stackData.get(j));
+                    if (stack.isMeaningfulCycle()) {
                         matchStacks.add(stack);
                         stackCount++;
                     } else {
@@ -107,8 +107,8 @@ public class StackDataView extends View {
         Log.d("wildrank", "match count: " + stacks.size());
 
         int stackCount = 0;
-        for (List<StackModel> stackModels : stacks) {
-            for (StackModel stack : stackModels) {
+        for (List<CycleModel> cycleModels : stacks) {
+            for (CycleModel stack : cycleModels) {
                 if (stack instanceof BlankStack) {
                     // Don't draw anything here.
                     stackCount++;
@@ -204,7 +204,7 @@ public class StackDataView extends View {
         }
     }
 
-    private class BlankStack extends StackModel {
+    private class BlankStack extends CycleModel {
         // Empty class to represent a blank space
     }
 }

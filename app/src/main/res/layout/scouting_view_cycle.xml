@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/stack"
+        android:text="@string/cycle"
         android:textSize="20dp" />
 
     <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
@@ -86,12 +86,12 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/finish_stack"
+        android:id="@+id/finish_cycle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/linearLayout"
-        android:text="@string/button_finish_stack" />
+        android:text="@string/button_finish_cycle" />
 
 
 </RelativeLayout>

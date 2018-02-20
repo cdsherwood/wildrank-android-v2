@@ -7,7 +7,7 @@ import android.util.Log;
 import com.couchbase.lite.Document;
 
 import org.wildstang.wildrank.androidv2.interfaces.IMatchDataView;
-import org.wildstang.wildrank.androidv2.models.StackModel;
+import org.wildstang.wildrank.androidv2.models.CycleModel;
 
 import java.util.List;
 import java.util.Map;
@@ -35,9 +35,9 @@ public class MatchDataMaxHeightView extends MatchDataView implements IMatchDataV
                 .map(doc -> (Map<String, Object>) doc.getProperty("data"))
                 .flatMap(data -> Observable.from((List<Map<String, Object>>) data.get("stacks")))
                 .map(stack -> {
-                    boolean preexisting = (boolean) stack.get(StackModel.PREEXISTING_KEY);
-                    int preexistingHeight = (int) stack.get(StackModel.PREEXISTING_HEIGHT_KEY);
-                    int toteCount = (int) stack.get(StackModel.TOTE_COUNT_KEY);
+                    boolean preexisting = (boolean) stack.get(CycleModel.PREEXISTING_KEY);
+                    int preexistingHeight = (int) stack.get(CycleModel.PREEXISTING_HEIGHT_KEY);
+                    int toteCount = (int) stack.get(CycleModel.TOTE_COUNT_KEY);
                     int height;
                     if (preexisting) {
                         height = preexistingHeight + toteCount;
