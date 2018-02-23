@@ -23,7 +23,7 @@ public class ScoutingCyclesView extends ScoutingView implements View.OnClickList
     private ScoutingCheckboxView switchWeakenCheckbox;
     private ScoutingCheckboxView switchDiffCheckbox;
     private ScoutingCheckboxView switchStrengthenCheckbox;
-    private ScoutingCheckboxView ExchangeScoreCheckbox;
+    private ScoutingCheckboxView exchangeScoreCheckbox;
     private ScoutingCheckboxView notScoredCheckbox;
 
     public ScoutingCyclesView(Context context, AttributeSet attrs) {
@@ -84,13 +84,16 @@ public class ScoutingCyclesView extends ScoutingView implements View.OnClickList
         int id = v.getId();
         if (id == R.id.finish_cycle) {
             CycleModel data = new CycleModel();
-            data.toteCount = totesCounter.getCount();
-            data.hasBin = hasBinCheckbox.isChecked();
-            data.hasNoodle = hasNoodleCheckbox.isChecked();
-            data.binDropped = binDroppedCheckbox.isChecked();
-            data.stackDropped = stackDroppedCheckbox.isChecked();
-            data.isPreexisting = preexistingStackCheckbox.isChecked();
+            data.dropCount = gamepieceDroppedCounter.getCount();
+            data.isScaleWeaken = scaleWeakenCheckbox.isChecked();
+            data.isScaleDiff = scaleDiffCheckbox.isChecked();
+            data.isScaleStrengthen = scaleStrengthenCheckbox.isChecked();
+            data.isSwitchWeaken = switchWeakenCheckbox.isChecked();
+            data.isSwitchDiff = switchDiffCheckbox.isChecked();
+            data.isSwitchStrengthen = switchStrengthenCheckbox.isChecked();
             data.notScored = notScoredCheckbox.isChecked();
+
+            /* IMPORTANT! - see above (line # 45ish)
             int preexistingHeight = Integer.parseInt(preexistingHeightSpinner.getSelectedItem());
             data.preexistingToteCount = preexistingHeight;
 
@@ -98,6 +101,7 @@ public class ScoutingCyclesView extends ScoutingView implements View.OnClickList
             if (data.isPreexisting == false) {
                 data.preexistingToteCount = 0;
             }
+            */
 
             cycles.add(data);
 
@@ -107,13 +111,16 @@ public class ScoutingCyclesView extends ScoutingView implements View.OnClickList
     }
 
     private void updateViewsFromData(CycleModel data) {
-        totesCounter.setCount(data.toteCount);
-        hasBinCheckbox.setChecked(data.hasBin);
-        hasNoodleCheckbox.setChecked(data.hasNoodle);
-        binDroppedCheckbox.setChecked(data.binDropped);
-        stackDroppedCheckbox.setChecked(data.stackDropped);
-        preexistingStackCheckbox.setChecked(data.isPreexisting);
+        gamepieceDroppedCounter.setCount(data.dropCount);
+        scaleWeakenCheckbox.setChecked(data.isScaleWeaken);
+        scaleDiffCheckbox.setChecked(data.isScaleDiff);
+        scaleStrengthenCheckbox.setChecked(data.isScaleStrengthen);
+        switchWeakenCheckbox.setChecked(data.isSwitchWeaken);
+        switchDiffCheckbox.setChecked(data.isSwitchDiff);
+        switchStrengthenCheckbox.setChecked(data.isSwitchStrengthen);
+        exchangeScoreCheckbox.setChecked(data.isExchangeScore);
         notScoredCheckbox.setChecked(data.notScored);
-        preexistingHeightSpinner.setSelectionBasedOnText(Integer.toString(data.preexistingToteCount));
+        //preexistingStackCheckbox.setChecked(data.isPreexisting);
+        //preexistingHeightSpinner.setSelectionBasedOnText(Integer.toString(data.preexistingToteCount));
     }
 }

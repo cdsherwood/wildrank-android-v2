@@ -83,7 +83,7 @@ public class StackDataView extends View {
         }
         invalidate();
     }
-
+/*
     @Override
     public void onDraw(Canvas c) {
         if (stacks.isEmpty()) {
@@ -187,7 +187,7 @@ public class StackDataView extends View {
             c.drawLine(stackCount * toteWidth, 0, stackCount * toteWidth, getHeight(), outlinePaint);
         }
     }
-
+*/
     class MatchDocumentComparator implements Comparator<Document> {
 
         @Override
