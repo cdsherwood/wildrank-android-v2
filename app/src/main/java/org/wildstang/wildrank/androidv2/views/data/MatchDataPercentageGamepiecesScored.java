@@ -11,9 +11,9 @@ import org.wildstang.wildrank.androidv2.models.CycleModel;
 import java.util.List;
 import java.util.Map;
 
-public class MatchDataPercentageStacksDroppedView extends MatchDataView implements IMatchDataView {
+public class MatchDataPercentageGamepiecesScored extends MatchDataView implements IMatchDataView {
 
-    public MatchDataPercentageStacksDroppedView(Context context, AttributeSet attrs) {
+    public MatchDataPercentageGamepiecesScored(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -25,26 +25,26 @@ public class MatchDataPercentageStacksDroppedView extends MatchDataView implemen
             return;
         }
 
-        double totalStacks = 0;
-        double droppedStacks = 0;
+        double totalScored = 0;
+        double notScoreds = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
             if (data == null) {
                 return;
             }
-            List<Map<String, Object>> stacks = (List<Map<String, Object>>) data.get("stacks");
-            for (Map<String, Object> stack : stacks) {
-                totalStacks++;
-                boolean dropped = (boolean) stack.get(CycleModel.STACK_DROPPED_KEY);
-                if (dropped) {
-                    droppedStacks++;
+            List<Map<String, Object>> cycles = (List<Map<String, Object>>) data.get("stacks");
+            for (Map<String, Object> cycle : cycles) {
+                totalScored++; // if gamepiece is not abandoned we assume it to be scored (not the right way to do it)
+                boolean notScored = (boolean) cycle.get(CycleModel.GAMEPIECE_NOT_SCORED_KEY);
+                if (notScored) {
+                    notScoreds++;
                 }
             }
         }
-        if (totalStacks == 0) {
+        if (totalScored == 0) {
             setValueText("N/A");
         } else {
-            double percentage = (droppedStacks / totalStacks);
+            double percentage = (notScoreds / totalScored);
             setValueText(formatPercentageAsString(percentage));
         }
     }

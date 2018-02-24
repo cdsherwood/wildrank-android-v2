@@ -37,10 +37,11 @@ public class MatchDataNumberCappedStacksView extends MatchDataView implements IM
                     List<Map<String, Object>> cycles = (List<Map<String, Object>>) data.get("stacks");
                     return Observable.from(cycles);
                 })
-                .map(stack -> {
-                    boolean includesBin = (boolean) stack.get(CycleModel.HAS_BIN_KEY);
-                    boolean binDropped = (boolean) stack.get(CycleModel.BIN_DROPPED_KEY);
-                    return (includesBin && !binDropped) ? 1 : 0;
+                .map(cycle -> {
+                    //boolean includesBin = (boolean) cycle.get(CycleModel.HAS_BIN_KEY);
+                    //boolean binDropped = (boolean) cycle.get(CycleModel.BIN_DROPPED_KEY);
+                    //return (includesBin && !binDropped) ? 1 : 0;
+                    return 0;
                 })
                 .subscribeOn(Schedulers.computation());
         MathObservable.sumInteger(o)

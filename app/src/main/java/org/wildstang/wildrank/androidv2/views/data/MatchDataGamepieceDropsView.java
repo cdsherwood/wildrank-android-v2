@@ -17,9 +17,9 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.observables.MathObservable;
 import rx.schedulers.Schedulers;
 
-public class MatchDataMaxHeightView extends MatchDataView implements IMatchDataView {
+public class MatchDataGamepieceDropsView extends MatchDataView implements IMatchDataView {
 
-    public MatchDataMaxHeightView(Context context, AttributeSet attrs) {
+    public MatchDataGamepieceDropsView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
