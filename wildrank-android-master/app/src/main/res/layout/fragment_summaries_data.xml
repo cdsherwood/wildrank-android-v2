@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Quick Overview" />
+
+        <!--
+         Defensive Metric
+         CS - hatches/cargo per match
+         RO - hatches/cargo per match
+         Start pos
+         End pos
+
+         -->
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataMaxDefMovesView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Max count of  def. moves in a match"
+            app:label="Max Defensive Moves" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataGeomStatsCargoshipElements
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The geometric average of hatches/cargo scored on the cargoship per match"
+            app:label="Average Cargoship Hatches / Cargo" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataGeomStatsRocketElements
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The geometric average of hatches/cargo scored on a rocket per match"
+            app:label="Average Rocket Hatches / Cargo" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataPreferredStartLoc
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Preferred starting level on Hab"
+            app:label="Preferred Starting Level" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataPreferredEndLoc
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Preferred climb level on Hab"
+            app:label="Preferred Climb Height" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataEndgameIssues
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Percentage of instances where problems occurred in the endgame (Climbs/Falls)"
+            app:label="Issues on Climb" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Compatibility Overview " />
+
+        <!--
+         Auto compatibility (All bot)
+         Teleop Compatibility (Offense bot)
+         Endgame Compatibility (Offense bot)
+         Auto compatibility (Defense bot)
+         Endgame Compatibility (Defense bot)
+         -->
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataAutoSummarizeCompatability
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The percentage of time this robot demonstrates compatibility with autonomous strategy - Cross auto line, No intra-team contact, Place 1+ gamepieces"
+            app:label="Auto Strategy Compatibility" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Cycle Statistics" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataPercentageGamePiecesScoredView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Calculated as 100% minus the percentage of all abandoned gamepieces divided by all attempts"
+            app:label="Percentage of Gamepieces Scored" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataGeomStatsCycles
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Geometric statistics of cycles per match, excluding null cycles. Values are: average, deviation from average, glass cannon status (coefficient of variation). Best is high - low - low."
+            app:label="O'all Cycles (/Match, Avg, SD, CV)" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataGeomStatsGameCargoAll
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Geometric statistics of cycles per match, excluding null cycles. Values are: average, deviation from average, glass cannon status (coefficient of variation). Best is high - low - low."
+            app:label="All Cargo     (Avg, SD, CV)" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataGeomStatsGameHatchesAll
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Geometric statistics of cycles per match, excluding null cycles. Values are: average, deviation from average, glass cannon status (coefficient of variation). Best is high - low - low."
+            app:label="All Hatches (Avg, SD, CV)" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataGeomStatsGameCargoL3
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Geometric statistics of level 3 cargo per match, excluding null cycles. Values are: average, deviation from average, glass cannon status (coefficient of variation). Best is high - low - low."
+            app:label="L3 Cargo     (Avg, SD, CV)" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataGeomStatsGameHatchL3
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Geometric statistics of level 3 hatches per match, excluding null cycles. Values are: average, deviation from average, glass cannon status (coefficient of variation). Best is high - low - low."
+            app:label="L3 Hatches (Avg, SD, CV)" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataGeomStatsGameCargoL2
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Geometric statistics of level 2 game cargo per match, excluding null cycles. Values are: average, deviation from average, glass cannon status (coefficient of variation). Best is high - low - low."
+            app:label="L2 Cargo     (Avg, SD, CV)" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataGeomStatsGameHatchL2
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Geometric statistics of level 2 hatches per match, excluding null cycles. Values are: average, deviation from average, glass cannon status (coefficient of variation). Best is high - low - low."
+            app:label="L2 Hatches (Avg, SD, CV)" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataGeomStatsGameCargoL1
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Geometric statistics of level 1 cargo per match, excluding null cycles. Values are: average, deviation from average, glass cannon status (coefficient of variation). Best is high - low - low."
+            app:label="L1 Cargo     (Avg, SD, CV)" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataGeomStatsGameHatchL1
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Geometric statistics of level 1 hatches per match, excluding null cycles. Values are: average, deviation from average, glass cannon status (coefficient of variation). Best is high - low - low."
+            app:label="L1 Hatches (Avg, SD, CV)" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataMaxGamePieceDropView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Maximimum times a team dropped a gamepiece on one cycle, over all cycles"
+            app:label="Max Gamepieces Dropped - All Cycles" />
+
+        <!--<TextView
+            android:id="@+id/robotPositioning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Robot Positioning (Auto)" />-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Positions" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataPreferredStartLoc
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Preferred starting level on Hab"
+            app:label="Preferred Starting Level" />
+
+        <!--<org.wildstang.wildrank.androidv2.views.data.MatchDataAutoMove
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Percentage of time crossing out of auto zone"
+            app:label="Auto Move %" /> -->
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataPreferredEndLoc
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Preferred climb level on Hab"
+            app:label="Preferred Climb Height" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataMaxEndLoc
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Max demonstrated climb level on Hab"
+            app:label="Maximum Climb Height" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Moves, Ratings, etc." />
+
+        <!--<org.wildstang.wildrank.androidv2.views.data.MatchDataAverageHumanPlayerRatingView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Averages all non-zero human player rankings that have been given for this team."
+            app:label="Average Human Player Ranking" /> -->
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataNumberDefMovesView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Sum of  def. moves"
+            app:label="Total Defensive Moves" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataAverageRobotSpeedRatingView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Averages all non-zero robot speed rankings that have been given for this team."
+            app:label="Average Robot Speed Ranking" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataAverageFloorPickupRatingView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Averages all non-zero floor pick-up rankings that have been given for this team."
+            app:label="Average Floor Pick-up Ranking" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataTotalYellowRedCardsView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Simply the sum of all yellow/red cards received by the team."
+            app:label="Total Yellow/Red Cards" />
+
+    </LinearLayout>
+
+</ScrollView>

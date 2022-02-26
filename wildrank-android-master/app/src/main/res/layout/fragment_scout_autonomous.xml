@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/explanation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/autonomous_explanation"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:id="@+id/field_padding"
+        android:padding="8dp"
+        android:layout_width="600dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/explanation"
+        android:orientation="vertical"
+        android:background="@drawable/hab">
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/general"
+        android:layout_width="325dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/explanation"
+        android:layout_toRightOf="@+id/field_padding"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Robot Positions" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="auto-startPos"
+            app:label="Starting Position"
+            app:values="@array/auto_startLevel" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="auto-drive"
+            app:label="Crosses Auto Line" />
+
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="auto-robot_contact"
+            app:label="Ran Into ANY Other Robot or Tipped" />
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="325dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/explanation"
+        android:layout_toRightOf="@+id/general"
+        android:orientation="vertical">
+
+        <!--<TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Gamepiece Scored Counts" /> -->
+
+        <!--<org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+            android:id="@+id/drive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="auto-drive"
+            app:label="Drives to Auto Zone" /> -->
+
+       <!-- <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:id="@+id/dropped_Count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="auto-dropped"
+            app:label="Dropped/Missed Game Pieces" /> -->
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="auto-score_hatch"
+            app:label="Scores hatch(es) in auto" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="auto-score_cargo"
+            app:label="Scores Cargo(s) in auto" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="68dp"
+            android:layout_marginStart="68dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
