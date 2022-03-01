@@ -2,6 +2,8 @@ package org.wildstang.wildrank.androidv2.views.scouting;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.CheckBox;
@@ -11,22 +13,38 @@ import org.wildstang.wildrank.androidv2.R;
 
 import java.util.Map;
 
-public class ScoutingTransparentCheckboxView extends ScoutingView {
+public class ScoutingCheckboxView extends ScoutingView {
 
+    private CardView cardView;
     private TextView labelView;
     private CheckBox checkboxView;
 
     private OnValueChangedListener listener;
 
-    public ScoutingTransparentCheckboxView(Context context, AttributeSet attrs) {
+    public ScoutingCheckboxView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         LayoutInflater inflater = LayoutInflater.from(context);
-        inflater.inflate(R.layout.custom_view_transparent_card_checkbox, this, true);
+        inflater.inflate(R.layout.custom_view_checkbox, this, true);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ScoutingView, 0, 0);
+        //String bg_color = a.getString(R.styleable.ScoutingCheckboxView_bg_color);
         String label = a.getString(R.styleable.ScoutingView_label);
         a.recycle();
+
+        cardView = (CardView) findViewById(R.id.card);
+        /*
+        switch (bg_color) {
+            case "transparent":
+                cardView.setCardBackgroundColor(Color.TRANSPARENT);
+                break;
+            case "lt_gray":
+                cardView.setCardBackgroundColor(Color.LTGRAY);
+                break;
+            default:
+                cardView.setCardBackgroundColor(Color.BLACK);
+                break;
+        }*/
 
         labelView = (TextView) findViewById(R.id.label);
         labelView.setText(label);
